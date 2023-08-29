@@ -49,6 +49,7 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set mouse=a
 set number
+set relativenumber
 set hlsearch
 set incsearch
 set showmatch
@@ -62,7 +63,12 @@ set wrap "Wrap lines
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
+" Better escape
 inoremap kj <esc>
+
+" Half-page movement stays centered
+nnoremap <C-d> <C-d>zz
+nnoremap <C-a> <C-a>zz
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -166,5 +172,4 @@ nmap <leader>f  <Plug>(coc-format-selected)
 " NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-map <leader>nt :NERDTreeToggle<cr>
-map <leader>nf :NERDTreeFind<cr>
+map <leader>e :NERDTreeToggle<cr>

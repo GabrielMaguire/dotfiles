@@ -104,14 +104,6 @@ return {
     },
   },
 
-  -- TODO: Get C++ comments set to dark green
-  {
-    "nvim-treesitter/nvim-treesitter",
-    config = function()
-      vim.api.nvim_set_hl(0, "@comment.cpp", { fg = "#50804D" })
-    end,
-  },
-
   -- Use <tab> for completion and snippets (supertab)
   -- first: disable default <tab> and <s-tab> behavior in LuaSnip
   {

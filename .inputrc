@@ -12,6 +12,8 @@ $if mode=vi
     set keymap vi-insert
     "kj": "\e"
     "\C-l": clear-screen
+    "\C-a": beginning-of-line
+    "\C-e": end-of-line
     "\C-n": history-search-forward
     "\C-p": history-search-backward
 

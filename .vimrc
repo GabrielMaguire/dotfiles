@@ -89,10 +89,15 @@ map <C-l> <C-W>l
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'https://github.com/tpope/vim-commentary'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'szw/vim-maximizer'
+
 " Plug 'https://github.com/preservim/nerdtree'                       " Filesystem navigation
-Plug 'https://github.com/tpope/vim-commentary'                     " Code commenting
 " Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'} " Auto Completion
 " Plug 'https://github.com/jiangmiao/auto-pairs'
 " Plug 'https://github.com/vim-airline/vim-airline'
 
 call plug#end()
+
+nnoremap <C-w>m :MaximizerToggle<CR>

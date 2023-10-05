@@ -1,4 +1,4 @@
-set editing-mode vi
+set editing-mode emacs
 
 $if mode=vi
 
@@ -11,17 +11,23 @@ $if mode=vi
 
     set keymap vi-insert
     "kj": "\e"
-    "\C-l": clear-screen
     "\C-a": beginning-of-line
     "\C-e": end-of-line
+    "\C-l": clear-screen
     "\C-n": history-search-forward
     "\C-p": history-search-backward
-
+    "\C-w": backward-kill-word
 
 $endif
 
-set skip-completed-text on
-set colored-stats on
-set visible-stats on
+$if mode=emacs
 
-set keymap vi
+    set show-mode-in-prompt on
+    set emacs-mode-string "\1\e[6 q\2"
+
+$endif
+
+set colored-stats on
+set mark-symlinked-directories on
+set skip-completed-text on
+set visible-stats on

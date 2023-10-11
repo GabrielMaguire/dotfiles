@@ -5,13 +5,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# ---------------------------------------------------------
-# GNU Readline
-#
-# Additional non-bash-specific configurations can be found
-# in ~/.inputrc.
-# ---------------------------------------------------------
-set -o vi
 
 # ---------------------------------------------------------
 # Prompt String

@@ -23,6 +23,13 @@ let &t_SI = "\e[6 q"
 let &t_SR = "\e[4 q"
 let &t_EI = "\e[2 q"
 
+augroup CursorCommands
+	au!
+	autocmd VimEnter * silent !echo -en "\e[2 q"
+	autocmd VimLeave * silent !echo -en "\e[6 q"
+	autocmd VimEnter * redraw!
+augroup END
+
 filetype plugin on
 filetype indent on
 
@@ -35,9 +42,8 @@ syntax enable
 " Set regular expression engine automatically
 set regexpengine=0
 
-" Enable 256 colors palette in Gnome Terminal
-if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
+if $COLORTERM == 'truecolor'
+	set t_Co=256
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -63,6 +69,8 @@ set smarttab
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+set shiftwidth=4
+set tabstop=4
 
 " How many tenths of a second to blink when matching brackets
 set mat=2

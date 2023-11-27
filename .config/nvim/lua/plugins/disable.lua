@@ -6,4 +6,5 @@ return {
   { "goolord/alpha-nvim", enabled = false },
   { "echasnovski/mini.starter", enabled = false },
   { "hrsh7th/cmp-emoji", enabled = false },
+  { "rcarriga/nvim-notify", enabled = false },
 }

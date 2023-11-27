@@ -97,9 +97,10 @@ map <C-l> <C-W>l
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'https://github.com/tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'szw/vim-maximizer'
+Plug 'NLKNguyen/papercolor-theme'
 
 " Plug 'https://github.com/preservim/nerdtree'                       " Filesystem navigation
 " Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'} " Auto Completion
@@ -109,3 +110,6 @@ Plug 'szw/vim-maximizer'
 call plug#end()
 
 nnoremap <C-w>m :MaximizerToggle<CR>
+
+set background=dark
+colorscheme PaperColor

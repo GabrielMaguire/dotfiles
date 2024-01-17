@@ -8,5 +8,6 @@ return {
   { "goolord/alpha-nvim", enabled = false },
   { "hrsh7th/cmp-emoji", enabled = false },
   { "nvim-treesitter/nvim-treesitter-context", enabled = false },
+  { "nvimdev/dashboard-nvim", enabled = false },
   { "rcarriga/nvim-notify", enabled = false },
 }

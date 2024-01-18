@@ -13,7 +13,12 @@ return {
   },
   opts = {
     window = {
-      position = "current",
+      position = "float",
+
+      -- If I want to fullscreen the floating window
+      -- popup = {
+      --   size = { height = "100%", width = "100%" },
+      -- },
     },
     filesystem = {
       filtered_items = {
@@ -21,5 +26,6 @@ return {
         hide_dotfiles = false,
       },
     },
+    enable_diagnostics = false,
   },
 }

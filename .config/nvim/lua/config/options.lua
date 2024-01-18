@@ -5,6 +5,12 @@
 -- Disable LazyVim auto format on save
 vim.g.autoformat = false
 
+-- Enable code folding using treesitter
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- May need this. Prevents closing all folds when opening a file.
+-- vim.opt.foldenable = false
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.conceallevel = 0

@@ -8,4 +8,8 @@ return {
       winblend = 0,
     },
   },
+  keys = {
+    { "<leader>gc", false },
+    { "<leader>gs", false },
+  },
 }

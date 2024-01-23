@@ -10,6 +10,7 @@ return {
       end,
       desc = "Explorer NeoTree (root dir)",
     },
+    { "<leader>ge", false },
   },
   opts = {
     window = {

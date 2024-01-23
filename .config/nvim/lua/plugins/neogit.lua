@@ -5,14 +5,18 @@ return {
     "sindrets/diffview.nvim",
     "nvim-telescope/telescope.nvim",
   },
-  -- keys = {
-  --   {
-  --     "<leader>g",
-  --     function()
-  --       require("neogit").open()
-  --     end,
-  --     desc = "Neogit",
-  --   },
-  -- },
+  keys = {
+    {
+      "<leader>gs",
+      function()
+        require("neogit").open()
+      end,
+      desc = "Neogit",
+    },
+  },
   config = true,
+  opts = {
+    disable_context_highlighting = true,
+    graph_style = "unicode",
+  },
 }

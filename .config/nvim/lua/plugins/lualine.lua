@@ -1,13 +1,19 @@
 return {
-  "nvim-lualine/lualine.nvim",
-  optional = true,
-
-  opts = function(_, opts)
-    -- Remove Aerial integration
-    table.remove(opts.sections.lualine_c)
-
-    -- Re-organize sections
-    opts.sections.lualine_y = { "progress" }
-    opts.sections.lualine_z = { "location" }
-  end,
+  'nvim-lualine/lualine.nvim',
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  opts = {
+    options = { section_separators = '', component_separators = '│' },
+    sections = {
+      lualine_a = { 'mode' },
+      lualine_b = {
+        { 'branch', icon = '' },
+        'diff',
+        'diagnostics',
+      },
+      lualine_c = { { 'filename', path = 3, color = { fg = 'grey' } } },
+      lualine_x = { { 'filetype' } },
+      lualine_y = { 'progress' },
+      lualine_z = { 'location' },
+    },
+  },
 }

@@ -1,21 +1,17 @@
 return {
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    opts = {
-      color_overrides = {
-        mocha = {
-          base = "#0A0A0F",
-          mantle = "#000000",
-          crust = "#11111B",
-        },
+  'catppuccin/nvim',
+  priority = 1000, -- Make sure to load this before all the other start plugins.
+  init = function()
+    vim.cmd.colorscheme 'catppuccin'
+  end,
+  name = 'catppuccin',
+  opts = {
+    color_overrides = {
+      mocha = {
+        base = '#0A0A0F',
+        mantle = '#000000',
+        crust = '#11111B',
       },
-    },
-  },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "catppuccin",
     },
   },
 }

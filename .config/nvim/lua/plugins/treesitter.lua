@@ -45,23 +45,19 @@ return {
           enable = true,
           swap_next = {
             ['<leader>af'] = '@parameter.inner', -- swap parameters/argument with next
-            ['<leader>mf'] = '@function.outer', -- swap function with next
           },
           swap_previous = {
             ['<leader>aF'] = '@parameter.inner', -- swap parameters/argument with prev
-            ['<leader>mF'] = '@function.outer', -- swap function with previous
           },
         },
         move = {
           enable = true,
           set_jumps = true,
           goto_next_start = {
-            [']m'] = { query = '@function.outer', desc = 'Next method start' },
-            [']c'] = { query = '@function.outer', desc = 'Next class start' },
+            [']f'] = { query = '@function.outer', desc = 'Next function start' },
           },
           goto_previous_start = {
-            ['[m'] = { query = '@function.outer', desc = 'Previous method start' },
-            ['[c'] = { query = '@function.outer', desc = 'Previous class start' },
+            ['[f'] = { query = '@function.outer', desc = 'Previous function start' },
           },
         },
       },

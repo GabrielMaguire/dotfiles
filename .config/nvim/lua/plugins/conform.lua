@@ -15,8 +15,11 @@ return {
     format_on_save = false,
     formatters_by_ft = {
       bzl = { 'buildifier' },
+      c = { 'clang-format' },
+      cpp = { 'clang-format' },
       lua = { 'stylua' },
       python = { 'black' },
+      sh = { 'shfmt' },
     },
   },
 }

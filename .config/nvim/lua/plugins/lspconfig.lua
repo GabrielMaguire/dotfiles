@@ -201,14 +201,18 @@ return {
       --    :Mason
       --
       --  You can press `g?` for help in this menu.
-      require('mason').setup()
+      require('mason').setup {
+        ui = { border = 'rounded' },
+      }
 
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
+        'autopep8',
         'black',
         'buildifier',
+        'clang-format',
         'cmakelang',
         'cmakelint',
         'stylua',

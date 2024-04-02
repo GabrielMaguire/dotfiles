@@ -5,6 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 # ---------------------------------------------------------
 # Prompt String
@@ -29,13 +30,17 @@ HISTCONTROL=ignoreboth
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
-alias l="ls -AF"
-alias ll="ls -lAFh"
+export EZA_COLORS="uu=0:gu=0"
+alias l="eza"
+alias ll="eza -l"
+alias la="eza -lA"
 
 alias python='python3'
 
 alias gs="git status"
-alias gl="git log --oneline --graph --all"
+alias gl="git log --oneline --graph"
 
 # dotfile management
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+
+. "$HOME/.cargo/env"

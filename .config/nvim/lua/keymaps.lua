@@ -37,7 +37,7 @@ vim.keymap.set('n', '<leader>e', function()
 end, { desc = 'Open file explorer' })
 
 -- Toggle user interface diagnostics
-vim.keymap.set('n', '<leader>ud', function()
+vim.keymap.set('n', '<leader>td', function()
   if vim.diagnostic.is_disabled() then
     vim.diagnostic.enable()
   else

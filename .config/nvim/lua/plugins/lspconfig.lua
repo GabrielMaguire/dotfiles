@@ -166,7 +166,6 @@ return {
         neocmake = {}, -- alternative: cmake
         jsonls = {},
         marksman = {},
-        groovyls = {},
         -- gopls = {},
         pyright = {},
         -- rust_analyzer = {},

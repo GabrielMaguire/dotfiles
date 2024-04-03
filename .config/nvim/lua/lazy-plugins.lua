@@ -14,8 +14,6 @@ require('lazy').setup({
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
 
-  require 'kickstart/plugins/gitsigns',
-
   require 'kickstart/plugins/mini',
 
   -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
@@ -24,7 +22,6 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   -- require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
 
   { import = 'plugins' },

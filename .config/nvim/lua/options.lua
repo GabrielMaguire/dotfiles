@@ -57,7 +57,7 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
 -- Enable code folding using treesitter
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 -- May need this. Prevents closing all folds when opening a file.
 vim.opt.foldenable = false

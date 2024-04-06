@@ -17,6 +17,13 @@ return {
 
       {
         'p00f/clangd_extensions.nvim',
+        keys = {
+          {
+            '<leader>cx',
+            '<cmd>ClangdSwitchSourceHeader<cr>',
+            desc = { 'Switch Source/Header (C/C++)' },
+          },
+        },
         opts = {
           ast = {
             role_icons = {
@@ -110,7 +117,7 @@ return {
 
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
-          map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+          map('<leader>cn', vim.lsp.buf.rename, '[C]ode re[N]ame')
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.

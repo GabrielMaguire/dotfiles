@@ -8,16 +8,6 @@
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 # ---------------------------------------------------------
-# Prompt String
-# ---------------------------------------------------------
-if [ -f ~/.bash/git-prompt.sh ]; then
-    source ~/.bash/git-prompt.sh
-    git_branch='$(__git_ps1 " [\e[0;35m%s\e[m]")'
-fi
-
-PS1="[\e[0;32m\]\u@\h\[\e[0m] [\e[0;34m\w\e[m]${git_branch-}\n> "
-
-# ---------------------------------------------------------
 # History
 # ---------------------------------------------------------
 HISTSIZE=10000
@@ -44,3 +34,13 @@ alias gl="git log --oneline --graph"
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 
 . "$HOME/.cargo/env"
+
+# Ctrl-o to open LF terminal file manager
+lfcd() {
+	# `command` is needed in case `lfcd` is aliased to `lf`
+	cd "$(command lf -print-last-dir "$@")"
+}
+bind '"\C-o":"lfcd\C-m"'
+
+eval "$(fzf --bash)"
+eval "$(starship init bash)"

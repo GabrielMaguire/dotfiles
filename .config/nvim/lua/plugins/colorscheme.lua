@@ -5,6 +5,17 @@ return {
     init = function()
       vim.cmd.colorscheme 'nightfox'
     end,
+    opts = {
+      palettes = {
+        nightfox = {
+          bg0 = '#1c1c1c',
+          bg1 = '#262626',
+          bg2 = '#303030',
+          bg3 = '#3a3a3a',
+          bg4 = '#4e4e4e',
+        },
+      },
+    },
   },
   {
     'catppuccin/nvim',

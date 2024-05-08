@@ -1,0 +1,18 @@
+[credential]
+	helper = store
+[user]
+	name = Gabriel Maguire
+	email = gabrielmaguire@proton.me
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main
+[alias]
+	unstage = restore --staged
+	amend = commit --amend --no-edit
+	pushf = push --force-with-lease
+[rebase]
+	updateRefs = true
+	autoStash = true
+[pull]
+	rebase = true

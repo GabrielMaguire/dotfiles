@@ -48,9 +48,9 @@ end, { desc = 'Open file explorer' })
 
 -- Toggle user interface diagnostics
 vim.keymap.set('n', '<leader>td', function()
-  if vim.diagnostic.is_disabled() then
-    vim.diagnostic.enable()
+  if vim.diagnostic.is_enabled() then
+    vim.diagnostic.enable(false)
   else
-    vim.diagnostic.disable()
+    vim.diagnostic.enable()
   end
 end, { desc = 'Toggle diagnostics' })

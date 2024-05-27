@@ -21,7 +21,7 @@ return {
           {
             '<leader>cx',
             '<cmd>ClangdSwitchSourceHeader<cr>',
-            desc = { 'Switch Source/Header (C/C++)' },
+            desc = 'Switch Source/Header (C/C++)',
           },
         },
         opts = {

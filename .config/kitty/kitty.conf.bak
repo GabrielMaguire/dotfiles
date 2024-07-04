@@ -2409,6 +2409,6 @@ font_size 13.0
 term xterm-256color
 
 # BEGIN_KITTY_THEME
-# Catppuccin-Mocha
+# Wild Cherry
 include current-theme.conf
 # END_KITTY_THEME

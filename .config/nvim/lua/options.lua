@@ -62,3 +62,5 @@ vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 -- May need this. Prevents closing all folds when opening a file.
 vim.opt.foldenable = false
+
+vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"

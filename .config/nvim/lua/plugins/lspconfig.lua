@@ -221,6 +221,7 @@ return {
         'clang-format',
         'cmakelang',
         'cmakelint',
+        'shfmt',
         'stylua',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }

@@ -14,3 +14,5 @@ $git_status
 
 [directory]
 truncate_to_repo = false
+truncation_length = 0
+truncation_symbol = '…/'

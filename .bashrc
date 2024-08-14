@@ -31,15 +31,10 @@ alias grep='grep --color=auto'
 export EZA_COLORS="uu=0:gu=0"
 alias l="eza"
 alias ll="eza -l"
-alias la="eza -lA"
-
-alias python='python3'
-
-alias gs="git status"
-alias gl="git log --oneline --graph"
+alias la="eza -la"
 
 # dotfile management
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+alias config='git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 
 # ---------------------------------------------------------
 # Environment config

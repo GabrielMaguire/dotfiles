@@ -1,0 +1,11 @@
+hide_scroll = false
+line_wrap = word_char
+dynamic_lines = true
+allow_images = true
+image_size = 20
+matching = fuzzy
+term = alacritty
+prompt = Run...
+location = center
+width = 33%
+height = 50%

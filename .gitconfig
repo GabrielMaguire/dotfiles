@@ -8,6 +8,8 @@
 [init]
 	defaultBranch = main
 [alias]
+	s = status
+	l = log --oneline
 	unstage = restore --staged
 	amend = commit --amend --no-edit
 	pushf = push --force-with-lease

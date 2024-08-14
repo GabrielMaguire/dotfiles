@@ -4,8 +4,12 @@ return {
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
       vim.cmd.colorscheme 'nightfox'
+      vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#282828' })
     end,
     opts = {
+      options = {
+        transparent = true;
+      },
       palettes = {
         nightfox = {
           bg0 = '#1c1c1c',

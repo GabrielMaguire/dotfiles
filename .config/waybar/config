@@ -1,0 +1,26 @@
+{
+    "layer": "top",
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["battery", "custom/clock"],
+    "hyprland/window": {
+        "max-length": 50,
+        "icon": true,
+        "icon-size": 16,
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "$1"
+        },
+    },
+    "battery": {
+        "format": "{capacity}%  "
+    },
+    "clock": {
+        "format": "{:%I:%M:%S %p}",
+        "format-alt": "{:%a, %b %d  %I:%M:%S %p}",
+        "interval": 1,
+    },
+   "custom/clock": {
+        "exec": "date +\"%-I:%M:%S %p\"",
+        "interval": 1
+    }
+}

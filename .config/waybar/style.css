@@ -1,0 +1,339 @@
+/* Catppuccin Mocha */
+@define-color theme_rosewater #f5e0dc;
+@define-color theme_flamingo #f2cdcd;
+@define-color theme_pink #f5c2e7;
+@define-color theme_mauve #cba6f7;
+@define-color theme_red #f38ba8;
+@define-color theme_maroon #eba0ac;
+@define-color theme_peach #fab387;
+@define-color theme_yellow #f9e2af;
+@define-color theme_green #a6e3a1;
+@define-color theme_teal #94e2d5;
+@define-color theme_sky #89dceb;
+@define-color theme_sapphire #74c7ec;
+@define-color theme_blue #89b4fa;
+@define-color theme_lavender #b4befe;
+@define-color theme_text #cdd6f4;
+@define-color theme_subtext1 #bac2de;
+@define-color theme_subtext0 #a6adc8;
+@define-color theme_overlay2 #9399b2;
+@define-color theme_overlay1 #7f849c;
+@define-color theme_overlay0 #6c7086;
+@define-color theme_surface2 #585b70;
+@define-color theme_surface1 #45475a;
+@define-color theme_surface0 #313244;
+@define-color theme_base #1e1e2e;
+@define-color theme_mantle #181825;
+@define-color theme_crust #11111b;
+
+@define-color theme_base_transparent rgba(30, 30, 46, 0.90);
+@define-color theme_grey #c0c0c0;
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Hack Nerd Font Mono", sans-serif;
+    /* font-family: "Sans Serif", "Font Awesome 5 Free"; */
+    font-size: 13px;
+    font-weight: bold;
+    min-height: 0;
+}
+
+window#waybar {
+    background: @theme_base_transparent;
+    /* border-bottom: 1px solid #595959aa; */
+    border-bottom: 2px solid rgba(89, 89, 89, 0.66);
+}
+
+/* #window { */
+/*     font-weight: bold; */
+/* } */
+
+#window ,
+#custom-clock
+{
+    background: @theme_grey;
+}
+
+#workspaces button,
+#window,
+#clock,
+#custom-clock,
+#wireplumber,
+#battery
+{
+    margin: 2px 2px;
+    border-left: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+    border-bottom: 2px solid #404040;
+    border-right: 2px solid #404040;
+}
+
+#window,
+#clock,
+#custom-clock,
+#wireplumber,
+#battery
+{
+    padding: 0px 2px;
+    background: @theme_grey;
+}
+
+window#waybar.empty #window {
+    all: unset;
+}
+
+#workspaces {
+    /* font-weight: bold; */
+}
+
+#workspaces button {
+    padding: 0px 0px;
+    /* margin: 3px 3px; */
+    background: #c0c0c0;
+    color: #000000;
+    /* border-left: 2px solid #ffffff; */
+    /* border-top: 2px solid #ffffff; */
+    /* border-bottom: 2px solid #404040; */
+    /* border-right: 2px solid #404040; */
+    /* box-shadow: 1px 1px 1px 0px #000000; */
+}
+
+#workspaces button:hover {
+    /* box-shadow: 0px 0px 0px; */
+    text-shadow: none;
+    background: #E0E0E0;
+}
+
+#workspaces button.active {
+    background: @theme_blue;
+    /* background: #9999FF; */
+    color: #000000;
+    /* color: #FFFFFF; */
+}
+
+#wireplumber {
+    background-image: url('/home/gabriel/.icons/Chicago95/status/scalable/audio-volume-high.svg');
+    background-position: right;
+    background-size: 30%;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+}
+
+#battery {
+    background-image: url('/run/current-system/sw/share/icons/Chicago95/devices/scalable/battery.svg');
+    background-position: right;
+    background-size: 30%;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+}
+
+#battery.charging, #battery.plugged, #battery.full {
+    /* color: #ffffff; */
+    color: #000000;
+    /* background-color: #00D000; */
+    background-color: @theme_green;
+}
+
+#battery.critical:not(.charging) {
+    /* background-color: #FF3030; */
+    background-color: @theme_red;
+    /* color: #ffffff; */
+    color: #ffffff;
+}
+
+/* #scratchpad { */
+/*     padding: 5px 10px; */
+/*     margin: 5px 3px; */
+/*     background: #c0c0c0; */
+/*     color: #000000; */
+/*     border-left: 1px solid #ffffff; */
+/*     border-top: 1px solid #ffffff; */
+/*     border-bottom: 1px solid #404040; */
+/*     box-shadow: 1px 1px 1px 0px #000000; */
+/* } */
+
+/* #custom-start { */
+/*     padding: 5px 5px; */
+/*     margin: 5px 3px; */
+/*     font-weight: bold; */
+/*     background: url('/home/fribbit/.icons/Chicago95-tux/places/scalable/start-here.svg'); */
+/*     background-position: left; */
+/*     background-repeat: no-repeat; */
+/*     background-size: contain; */
+/*     border-left: 1px solid #ffffff; */
+/*     border-top: 1px solid #ffffff; */
+/*     border-bottom: 1px solid #404040; */
+/*     box-shadow: 1px 1px 1px 0px #000000; */
+/* } */
+/**/
+/* #custom-start:hover { */
+/*     background: url('/home/fribbit/.icons/Chicago95-tux/places/scalable/start-here.svg'); */
+/*     background-position: left; */
+/*     background-repeat: no-repeat; */
+/*     background-size: contain; */
+/*     box-shadow: 0px 0px 0px; */
+/*     text-shadow: none; */
+/* } */
+/**/
+/* #custom-start:active { */
+/*     background: url('/home/fribbit/.icons/Chicago95-tux/places/scalable/start-here.svg'); */
+/*     background-position: left; */
+/*     background-repeat: no-repeat; */
+/*     background-size: contain; */
+/*     box-shadow: 0px 0px 0px; */
+/*     text-shadow: none; */
+/*     background-color: #f0f0f0; */
+/* } */
+
+/* #battery { */
+/*     padding: 5px 5px; */
+/*     margin: 5px 3px; */
+/*     background-color: #c0c0c0; */
+/*     color: #000000; */
+/*     font-family: "Sans Serif", "Font Awesome 5 Free"; */
+/*     font-size: medium; */
+/*     border-left: 1px solid #ffffff; */
+/*     border-top: 1px solid #ffffff; */
+/*     border-bottom: 1px solid #404040; */
+/*     box-shadow: 1px 1px 1px 0px #000000; */
+/*     background-image: url('/home/fribbit/.icons/Chicago95-tux/devices/scalable/battery.svg'); */
+/*     background-position: right; */
+/*     background-size: 30%; */
+/*     background-repeat: no-repeat; */
+/*     background-origin: content-box; */
+/* } */
+/**/
+/* #backlight { */
+/*     padding: 5px 5px; */
+/*     margin: 5px 3px; */
+/*     background-color: #c0c0c0; */
+/*     color: #000000; */
+/*     font-family: "Sans Serif", "Font Awesome 5 Free"; */
+/*     font-size: medium; */
+/*     border-left: 1px solid #ffffff; */
+/*     border-top: 1px solid #ffffff; */
+/*     border-bottom: 1px solid #404040; */
+/*     box-shadow: 1px 1px 1px 0px #000000; */
+/*     background-image: url('/home/fribbit/.icons/Chicago95-tux/status/scalable/sunny.svg'); */
+/*     background-position: right; */
+/*     background-size: 30%; */
+/*     background-repeat: no-repeat; */
+/*     background-origin: content-box; */
+/* } */
+/**/
+/* #wireplumber { */
+/*     padding: 5px 5px; */
+/*     margin: 5px 3px; */
+/*     background-color: #c0c0c0; */
+/*     color: #000000; */
+/*     font-family: "Sans Serif", "Font Awesome 5 Free"; */
+/*     font-size: medium; */
+/*     border-left: 1px solid #ffffff; */
+/*     border-top: 1px solid #ffffff; */
+/*     border-bottom: 1px solid #404040; */
+/*     box-shadow: 1px 1px 1px 0px #000000; */
+/*     background-image: url('/home/fribbit/.icons/Chicago95-tux/status/scalable/audio-volume-high.svg'); */
+/*     background-position: right; */
+/*     background-size: 30%; */
+/*     background-repeat: no-repeat; */
+/*     background-origin: content-box; */
+/* } */
+/**/
+/* #pulseaudio { */
+/*     padding: 5px 5px; */
+/*     margin: 5px 3px; */
+/*     background-color: #c0c0c0; */
+/*     color: #000000; */
+/*     font-family: "Sans Serif", "Font Awesome 5 Free"; */
+/*     font-size: medium; */
+/*     border-left: 1px solid #ffffff; */
+/*     border-top: 1px solid #ffffff; */
+/*     border-bottom: 1px solid #404040; */
+/*     box-shadow: 1px 1px 1px 0px #000000; */
+/*     background-image: url('/home/fribbit/.icons/Chicago95-tux/status/scalable/audio-volume-high.svg'); */
+/*     background-position: right; */
+/*     background-size: 30%; */
+/*     background-repeat: no-repeat; */
+/*     background-origin: content-box; */
+/* } */
+/**/
+/* #memory { */
+/*     padding: 5px 5px; */
+/*     margin: 5px 3px; */
+/*     background-color: #c0c0c0; */
+/*     color: #000000; */
+/*     font-family: "Sans Serif", "Font Awesome 5 Free"; */
+/*     font-size: medium; */
+/*     border-left: 1px solid #ffffff; */
+/*     border-top: 1px solid #ffffff; */
+/*     border-bottom: 1px solid #404040; */
+/*     box-shadow: 1px 1px 1px 0px #000000; */
+/*     background-image: url('/home/fribbit/.icons/Chicago95-tux/devices/scalable/computer-laptop.svg'); */
+/*     background-position: right; */
+/*     background-size: 30%; */
+/*     background-repeat: no-repeat; */
+/*     background-origin: content-box; */
+/* } */
+/**/
+/* #cpu { */
+/*     padding: 5px 5px; */
+/*     margin: 5px 3px; */
+/*     background-color: #c0c0c0; */
+/*     color: #000000; */
+/*     font-family: "Sans Serif", "Font Awesome 5 Free"; */
+/*     font-size: medium; */
+/*     border-left: 1px solid #ffffff; */
+/*     border-top: 1px solid #ffffff; */
+/*     border-bottom: 1px solid #404040; */
+/*     box-shadow: 1px 1px 1px 0px #000000; */
+/*     background-image: url('/home/fribbit/.icons/Chicago95-tux/devices/scalable/processor.svg'); */
+/*     background-position: right; */
+/*     background-size: 30%; */
+/*     background-repeat: no-repeat; */
+/*     background-origin: content-box; */
+/* } */
+/**/
+/* #temperature { */
+/*     padding: 5px 5px; */
+/*     margin: 5px 3px; */
+/*     background-color: #c0c0c0; */
+/*     color: #000000; */
+/*     font-family: "Sans Serif", "Font Awesome 5 Free"; */
+/*     font-size: medium; */
+/*     border-left: 1px solid #ffffff; */
+/*     border-top: 1px solid #ffffff; */
+/*     border-bottom: 1px solid #404040; */
+/*     box-shadow: 1px 1px 1px 0px #000000; */
+/*     background-image: url('/home/fribbit/.icons/Chicago95-tux/status/scalable/weather-few-clouds.svg'); */
+/*     background-position: right; */
+/*     background-size: 30%; */
+/*     background-repeat: no-repeat; */
+/*     background-origin: content-box; */
+/* } */
+/**/
+/* #clock, #custom-clock { */
+/*     padding: 5px 5px; */
+/*     margin: 5px 3px; */
+/*     background-color: #b0b0b0; */
+/*     color: #000000; */
+/*     font-family: "Sans Serif", "Font Awesome 5 Free"; */
+/*     font-size: medium; */
+/*     border-left: 0.5px solid #000000; */
+/*     border-top: 1px solid #000000; */
+/*     border-bottom: 1px solid #ffffff; */
+/*     border-right: 1px solid #ffffff; */
+/*     box-shadow: -1px -0.5px 0px 0px #000000; */
+/*     background-image: url("/home/gabriel/.icons/Chicago95/apps/scalable/clock.svg"); */
+/*     background-position: right; */
+/*     background-size: 13%; */
+/*     background-repeat: no-repeat; */
+/*     background-origin: content-box; */
+/* } */
+
+/*#battery button:hover,*/
+
+/*#pulseaudio:hover {
+    background-color: #E0E0E0;
+    box-shadow: 0px 0px 0px;
+}*/

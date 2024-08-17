@@ -1,0 +1,92 @@
+#!/bin/bash
+
+# Based off of https://github.com/Shringe/dunst-media-control
+
+volume_step=5
+brightness_step=5
+max_volume=100
+notification_timeout=1000 # in milliseconds
+icon_theme_path=/run/current-system/sw/share/icons/Chicago95/status/32
+
+function get_volume {
+    wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{ print $2 * 100 }'
+}
+
+function get_mute {
+    wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep "MUTED"
+}
+
+function get_brightness {
+    declare -i current=$(brightnessctl get)
+    declare maximum=$(brightnessctl max)
+    echo "($current / $maximum) * 100" | bc -l | xargs printf %.0f
+}
+
+function get_volume_icon {
+    if [ "$1" -eq 0 ] || get_mute ; then
+        echo "audio-volume-muted.png"
+    elif [ "$1" -lt 30 ]; then
+        echo "audio-volume-low.png"
+    elif [ "$1" -lt 80 ]; then
+        echo "audio-volume-medium.png"
+    else
+        echo "audio-volume-high.png"
+    fi
+}
+
+function show_volume_notif {
+    declare -i volume=$(get_volume)
+    declare icon_path=$icon_theme_path/$(get_volume_icon $volume)
+
+    notify-send \
+        --icon=$icon_path \
+        --expire-time $notification_timeout \
+        --hint string:x-dunst-stack-tag:volume_notif \
+        --hint int:value:$volume \
+        "$volume%"
+}
+
+function show_brightness_notif {
+    declare -i brightness=$(get_brightness)
+    declare icon_path=$icon_theme_path/display-brightness.png
+
+    notify-send \
+        --icon=$icon_path \
+        --expire-time $notification_timeout \
+        --hint string:x-dunst-stack-tag:brightness_notif \
+        --hint int:value:$brightness \
+        "$brightness%"
+}
+
+case $1 in
+    volume_up)
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ 0
+    volume=$(get_volume)
+    if [ $(( "$volume" + "$volume_step" )) -gt $max_volume ]; then
+        wpctl set-volume @DEFAULT_AUDIO_SINK@ $max_volume%
+    else
+        wpctl set-volume @DEFAULT_AUDIO_SINK@ $volume_step%+
+    fi
+    show_volume_notif
+    ;;
+
+    volume_down)
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ $volume_step%-
+    show_volume_notif
+    ;;
+
+    volume_mute)
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+    show_volume_notif
+    ;;
+
+    brightness_up)
+    brightnessctl set +$brightness_step%
+    show_brightness_notif
+    ;;
+
+    brightness_down)
+    brightnessctl set $brightness_step%-
+    show_brightness_notif
+    ;;
+esac

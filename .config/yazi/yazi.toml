@@ -1,7 +1,15 @@
 [manager]
 show_hidden = true
 
-# [opener]
-# edit = [
-# 	{ run = '${EDITOR:=nvim} "$@"', desc = "$EDITOR", block = true, for = "unix" },
-# ]
+[opener]
+open_image = [
+	{ run = 'feh "$1"', desc = "Open with feh", for = "linux"},
+]
+edit_image = [
+	{ run = 'gimp "$1"', desc = "Edit with gimp", for = "linux"},
+]
+
+[open]
+rules = [
+	{ mime = "image/*", use = [ "open_image", "edit_image", "reveal" ] },
+]

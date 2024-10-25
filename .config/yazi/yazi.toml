@@ -3,13 +3,14 @@ show_hidden = true
 
 [opener]
 open_image = [
-	{ run = 'feh "$1"', desc = "Open with feh", for = "linux"},
+	{ run = 'feh $1', desc = "Open with feh", for = "unix" },
 ]
 edit_image = [
-	{ run = 'gimp "$1"', desc = "Edit with gimp", for = "linux"},
+	{ run = 'gimp $1', desc = "Edit with gimp", for = "unix" },
 ]
 
 [open]
 rules = [
-	{ mime = "image/*", use = [ "open_image", "edit_image", "reveal" ] },
+	{ mime = "image/*", use = [ "open_image", "edit_image", "reveal"] },
+	{ mime = "{audio,video}/*", use = [ "play", "reveal"] },
 ]

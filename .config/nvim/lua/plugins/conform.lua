@@ -22,10 +22,12 @@ return {
       go = { 'gofmt' },
       html = { 'prettier' },
       javascript = { 'prettier' },
+      json = { 'prettier' },
       lua = { 'stylua' },
       markdown = { 'prettier' },
       python = { 'black' },
       sh = { 'shfmt' },
+      templ = { 'templ' },
     },
   },
 }

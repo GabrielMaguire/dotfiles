@@ -168,15 +168,26 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        asm_lsp = {},
         -- cssls = {},
+        asm_lsp = {},
         clangd = {},
-        html = {},
-        neocmake = {}, -- alternative: cmake
+        emmet_ls = {
+          capabilities = { textDocument = { completion = { completionItem = { snippetSupport = true } } } },
+          filetypes = { 'css', 'html', 'templ' },
+        },
+        eslint = {},
+        gopls = {},
+        html = {
+          filetypes = { 'html', 'templ' },
+        },
         jsonls = {},
         marksman = {},
-        gopls = {},
+        neocmake = {}, -- alternative: cmake
         pyright = {},
+        tailwindcss = {
+          -- init_options = { userLanguages = { templ = 'html' } },
+        },
+        templ = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -207,7 +218,6 @@ return {
       require('mason').setup {
         ui = { border = 'rounded' },
       }
-
     end,
   },
 }

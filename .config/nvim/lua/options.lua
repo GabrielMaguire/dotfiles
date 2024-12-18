@@ -65,3 +65,6 @@ vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldenable = false
 
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+
+-- Add filetypes not automatically recognized
+vim.filetype.add { extension = { templ = 'templ' } }

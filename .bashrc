@@ -35,6 +35,8 @@ alias config='git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 eval "$(fzf --bash)"
 eval "$(starship init bash)"
 
+export PATH="/home/gabriel/go/bin:$PATH"
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/gabriel/.conda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"

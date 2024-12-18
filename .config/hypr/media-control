@@ -4,7 +4,7 @@
 
 volume_step=5
 brightness_step=5
-max_volume=100
+max_volume=150
 notification_timeout=1000 # in milliseconds
 icon_theme_path=/run/current-system/sw/share/icons/Chicago95/status/32
 

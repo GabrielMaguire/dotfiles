@@ -112,14 +112,6 @@ window#waybar.empty #window {
     /* color: #FFFFFF; */
 }
 
-#wireplumber {
-    background-image: url('/home/gabriel/.icons/Chicago95/status/scalable/audio-volume-high.svg');
-    background-position: right;
-    background-size: 30%;
-    background-repeat: no-repeat;
-    background-origin: content-box;
-}
-
 #battery {
     background-image: url('/run/current-system/sw/share/icons/Chicago95/devices/scalable/battery.svg');
     background-position: right;
@@ -129,16 +121,12 @@ window#waybar.empty #window {
 }
 
 #battery.charging, #battery.plugged, #battery.full {
-    /* color: #ffffff; */
     color: #000000;
-    /* background-color: #00D000; */
     background-color: @theme_green;
 }
 
 #battery.critical:not(.charging) {
-    /* background-color: #FF3030; */
     background-color: @theme_red;
-    /* color: #ffffff; */
     color: #ffffff;
 }
 

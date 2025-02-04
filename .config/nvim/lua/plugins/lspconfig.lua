@@ -184,6 +184,7 @@ return {
         marksman = {},
         neocmake = {}, -- alternative: cmake
         pyright = {},
+        ts_ls = {},
         tailwindcss = {
           -- init_options = { userLanguages = { templ = 'html' } },
         },

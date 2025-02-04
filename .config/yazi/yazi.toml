@@ -3,7 +3,7 @@ show_hidden = true
 
 [opener]
 open_image = [
-	{ run = 'feh $1', desc = "Open with feh", for = "unix" },
+	{ run = 'feh --force-aliasing $1', desc = "Open with feh", for = "unix" },
 ]
 edit_image = [
 	{ run = 'gimp $1', desc = "Edit with gimp", for = "unix" },

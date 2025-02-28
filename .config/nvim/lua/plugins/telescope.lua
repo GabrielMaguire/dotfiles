@@ -114,6 +114,7 @@ return {
             },
             find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' },
           },
+          buffers = { sort_mru = true },
         },
         extensions = {
           ['ui-select'] = {

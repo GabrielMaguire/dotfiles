@@ -9,9 +9,8 @@ return {
       show_hidden = true,
     },
     float = {
-      padding = 4,
-      max_width = 100,
-      min_width = 40,
+      padding = 2, -- less than 2 leads to a buggy preview window
+      preview_split = 'right',
     },
   },
 

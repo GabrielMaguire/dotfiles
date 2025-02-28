@@ -1,35 +1,107 @@
+local pickers = require 'telescope.pickers'
+local finders = require 'telescope.finders'
+local make_entry = require 'telescope.make_entry'
+local conf = require('telescope.config').values
+
+local function split(str)
+  local result = {}
+  for word in string.gmatch(str, '%S+') do
+    table.insert(result, word)
+  end
+  return result
+end
+
+local live_ripgrep = function(opts)
+  opts = opts or {}
+  opts.cwd = opts.cwd or vim.uv.cwd()
+  -- opts.prompt_titletitle = opts.title or 'Live Ripgrep'
+
+  local finder = finders.new_async_job {
+    command_generator = function(prompt)
+      if not prompt or prompt == '' then
+        return nil
+      end
+
+      ---@diagnostic disable-next-line: deprecated
+      return vim.tbl_flatten {
+        { 'rg' },
+        split(prompt),
+        { '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case' },
+      }
+    end,
+    entry_maker = make_entry.gen_from_vimgrep(opts),
+    cwd = opts.cwd,
+  }
+
+  pickers
+    .new(opts, {
+      debounce = 100,
+      prompt_title = opts.title,
+      finder = finder,
+      previewer = conf.grep_previewer(opts),
+      sorter = require('telescope.sorters').empty(),
+    })
+    :find()
+end
+
+local live_multigrep = function(opts)
+  opts = opts or {}
+  opts.cwd = opts.cwd or vim.uv.cwd()
+
+  local finder = finders.new_async_job {
+    command_generator = function(prompt)
+      if not prompt or prompt == '' then
+        return nil
+      end
+
+      local pieces = vim.split(prompt, '  ')
+      local args = { 'rg' }
+      if pieces[1] then
+        table.insert(args, '-e')
+        table.insert(args, pieces[1])
+      end
+
+      if pieces[2] then
+        table.insert(args, '-g')
+        table.insert(args, pieces[2])
+      end
+
+      ---@diagnostic disable-next-line: deprecated
+      return vim.tbl_flatten {
+        args,
+        { '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case' },
+      }
+    end,
+    entry_maker = make_entry.gen_from_vimgrep(opts),
+    cwd = opts.cwd,
+  }
+
+  pickers
+    .new(opts, {
+      debounce = 100,
+      prompt_title = 'Multi Grep',
+      finder = finder,
+      previewer = conf.grep_previewer(opts),
+      sorter = require('telescope.sorters').empty(),
+    })
+    :find()
+end
+
 return {
-  { -- Fuzzy Finder (files, lsp, etc)
+  {
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
-    branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      { -- If encountering errors, see telescope-fzf-native README for installation instructions
+      {
         'nvim-telescope/telescope-fzf-native.nvim',
-
-        -- `build` is used to run some command when the plugin is installed/updated.
-        -- This is only run then, not every time Neovim starts up.
         build = 'make',
-
-        -- `cond` is a condition used to determine whether this plugin should be
-        -- installed and loaded.
-        cond = function()
-          return vim.fn.executable 'make' == 1
-        end,
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
-
-      -- Useful for getting pretty icons, but requires a Nerd Font.
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
-      -- [[ Configure Telescope ]]
-      -- See `:help telescope` and `:help telescope.setup()`
       require('telescope').setup {
-        -- You can put your default mappings / updates / etc. in here
-        --  All the info you're looking for is in `:help telescope.setup()`
-        --
         -- defaults = {
         --   mappings = {
         --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
@@ -37,6 +109,9 @@ return {
         -- },
         pickers = {
           find_files = {
+            layout_config = {
+              height = 100,
+            },
             find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' },
           },
         },
@@ -45,11 +120,12 @@ return {
             require('telescope.themes').get_dropdown(),
           },
         },
-        defaults = {
-          layout_strategy = 'horizontal',
-          layout_config = { prompt_position = 'top' },
-          sorting_strategy = 'ascending',
-          winblend = 0,
+        defaults = require('telescope.themes').get_ivy {
+          -- layout_strategy = 'horizontal',
+          -- layout_config = { prompt_position = 'top' },
+          -- sorting_strategy = 'ascending',
+          -- winblend = 0,
+          layout_config = { height = 100 },
         },
       }
 
@@ -73,25 +149,30 @@ return {
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
 
-      -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
+
+      -- File search
       vim.keymap.set('n', '<leader>,', builtin.buffers, { desc = 'Find existing buffers' })
       vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = 'Search files' })
-      vim.keymap.set('n', '<leader>s/', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+
+      -- Text search
+      vim.keymap.set('n', '<leader>s.', function()
+        builtin.live_grep {
+          cwd = require('telescope.utils').buffer_dir(),
+          prompt_title = 'Live Grep (current dir)',
+        }
+      end, { desc = 'Live Grep (current dir)' })
+      vim.keymap.set('n', '<leader>s/', builtin.live_grep, { desc = 'Live Grep' })
+      vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch [W]ord' })
+      vim.keymap.set('n', '<leader>/', function()
+        builtin.current_buffer_fuzzy_find(require('telescope.themes').get_ivy())
+      end, { desc = 'Fuzzy search in current buffer' })
+      vim.keymap.set('n', '<leader>sg', live_multigrep, { desc = 'Multi Grep' })
+
+      -- Misc. search
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-      vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch [W]ord' })
-
-      vim.keymap.set('n', '<leader>/', function()
-        builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-          winblend = 10,
-          previewer = false,
-          layout_config = {
-            width = 0.5,
-          },
-        })
-      end, { desc = 'Fuzzily search in current buffer' })
     end,
   },
 }

@@ -52,3 +52,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# ---------------------------------------------------------
+# API Keys
+# ---------------------------------------------------------
+export ANTHROPIC_API_KEY=$(cat ~/.api/anthropic)

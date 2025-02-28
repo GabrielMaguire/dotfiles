@@ -13,4 +13,5 @@ edit_image = [
 rules = [
 	{ mime = "image/*", use = [ "open_image", "edit_image", "reveal" ] },
 	{ mime = "{audio,video}/*", use = [ "play", "reveal" ] },
+	{ mime = "text/*", use = [ "edit" ] },
 ]

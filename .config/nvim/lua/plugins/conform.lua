@@ -1,5 +1,6 @@
 return {
   'stevearc/conform.nvim',
+  lazy = false,
   keys = {
     {
       '<leader>cf',
@@ -25,6 +26,7 @@ return {
       json = { 'prettier' },
       lua = { 'stylua' },
       markdown = { 'prettier' },
+      nix = { 'nixfmt' },
       python = { 'isort', 'black' },
       sh = { 'shfmt' },
       templ = { 'templ' },

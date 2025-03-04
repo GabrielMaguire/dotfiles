@@ -133,6 +133,7 @@ return {
             },
           },
         },
+        zls = {},
       }
 
       local lspconfig = require 'lspconfig'

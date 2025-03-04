@@ -30,6 +30,7 @@ return {
       python = { 'isort', 'black' },
       sh = { 'shfmt' },
       templ = { 'templ' },
+      zig = { 'zigfmt' },
     },
   },
 }

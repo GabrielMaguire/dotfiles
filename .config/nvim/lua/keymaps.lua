@@ -46,7 +46,8 @@ vim.keymap.set('v', '<A-k>', ":m '<-2<cr>gv=gv", { desc = 'Move Up' })
 vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
 
 vim.keymap.set('n', '<leader>e', function()
-  require('oil').toggle_float()
+  -- require('oil').toggle_float()
+  require('oil').open()
 end, { desc = 'Open file explorer' })
 
 -- Toggle user interface diagnostics

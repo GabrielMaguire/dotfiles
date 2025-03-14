@@ -1,14 +1,25 @@
 return {
   {
-    'EdenEast/nightfox.nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
-    init = function()
-      vim.cmd.colorscheme 'nightfox'
-      vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#282828' })
+    'ribru17/bamboo.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('bamboo').setup {
+        highlights = { ['@comment'] = { fg = '$grey' } },
+      }
+      require('bamboo').load()
     end,
+  },
+  {
+    'EdenEast/nightfox.nvim',
+    -- priority = 1000, -- Make sure to load this before all the other start plugins.
+    -- init = function()
+    --   vim.cmd.colorscheme 'nightfox'
+    --   vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#282828' })
+    -- end,
     opts = {
       options = {
-        transparent = true;
+        transparent = true,
       },
       palettes = {
         nightfox = {

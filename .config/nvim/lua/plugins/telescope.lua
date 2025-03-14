@@ -130,22 +130,6 @@ return {
         },
       }
 
-      -- Provide consistent coloring between telescope and oil
-      local palette = require('nightfox.palette').load 'nightfox'
-      vim.api.nvim_set_hl(0, 'TelescopeMatching', { fg = palette.yellow.base, bold = true })
-
-      vim.api.nvim_set_hl(0, 'TelescopeResultsNormal', { bg = palette.bg0 })
-      vim.api.nvim_set_hl(0, 'TelescopePreviewNormal', { bg = palette.bg0 })
-      vim.api.nvim_set_hl(0, 'TelescopePromptNormal', { bg = palette.bg0 })
-
-      vim.api.nvim_set_hl(0, 'TelescopeResultsBorder', { bg = palette.bg0, fg = palette.blue.dim })
-      vim.api.nvim_set_hl(0, 'TelescopePreviewBorder', { bg = palette.bg0, fg = palette.blue.dim })
-      vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { bg = palette.bg0, fg = palette.blue.dim })
-
-      vim.api.nvim_set_hl(0, 'TelescopeResultsTitle', { fg = palette.blue.dim })
-      vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { fg = palette.blue.dim })
-      vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { fg = palette.blue.dim })
-
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')

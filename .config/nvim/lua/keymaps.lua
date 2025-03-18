@@ -46,7 +46,6 @@ vim.keymap.set('v', '<A-k>', ":m '<-2<cr>gv=gv", { desc = 'Move Up' })
 vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
 
 vim.keymap.set('n', '<leader>e', function()
-  -- require('oil').toggle_float()
   require('oil').open()
 end, { desc = 'Open file explorer' })
 
@@ -58,3 +57,23 @@ vim.keymap.set('n', '<leader>td', function()
     vim.diagnostic.enable()
   end
 end, { desc = 'Toggle diagnostics' })
+
+---@param specifier string
+local function insert_current_filepath(specifier)
+  local absolute_path = vim.fn.expand(specifier)
+
+  -- Check if there's a valid file in the buffer
+  if absolute_path == '' then
+    print 'Error: Current buffer is not associated with a file'
+    return
+  end
+
+  vim.api.nvim_put({ absolute_path }, '', true, true)
+end
+
+vim.keymap.set('n', '<leader>pn', function()
+  insert_current_filepath '%:.'
+end, { desc = 'Insert current file absolute path' })
+vim.keymap.set('n', '<leader>pN', function()
+  insert_current_filepath '%:p'
+end, { desc = 'Insert current file absolute path' })

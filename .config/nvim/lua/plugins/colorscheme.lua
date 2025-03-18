@@ -6,6 +6,7 @@ return {
     config = function()
       require('bamboo').setup {
         highlights = { ['@comment'] = { fg = '$grey' } },
+        ending_tildes = true,
       }
       require('bamboo').load()
     end,
@@ -17,6 +18,7 @@ return {
     --   vim.cmd.colorscheme 'nightfox'
     --   vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#282828' })
     -- end,
+    lazy = true,
     opts = {
       options = {
         transparent = true,
@@ -38,6 +40,7 @@ return {
     -- init = function()
     --   vim.cmd.colorscheme 'catppuccin'
     -- end,
+    lazy = true,
     name = 'catppuccin',
     opts = {
       color_overrides = {

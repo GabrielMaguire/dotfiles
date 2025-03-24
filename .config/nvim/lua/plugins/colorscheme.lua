@@ -5,8 +5,19 @@ return {
     priority = 1000,
     config = function()
       require('bamboo').setup {
-        highlights = { ['@comment'] = { fg = '$grey' } },
+        highlights = {
+          ['@comment'] = { fg = '$grey' },
+          ['@variable.parameter'] = { fg = '$fg' },
+          ['@keyword.return'] = { fg = '$coral' },
+          ['@string.special.templ'] = { fg = '$fg' },
+        },
         ending_tildes = true,
+        code_style = {
+          comments = { italic = false },
+          conditionals = { italic = false },
+          namespaces = { italic = false },
+          parameters = { italic = false },
+        },
       }
       require('bamboo').load()
     end,

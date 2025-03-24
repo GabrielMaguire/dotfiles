@@ -40,6 +40,8 @@ local hijack_netrw = function()
   })
 end
 
+local detail = false
+
 return {
   'stevearc/oil.nvim',
   opts = {
@@ -67,6 +69,17 @@ return {
       ['gl'] = { 'actions.refresh', desc = 'Open the entry in a horizontal split' },
       ['go'] = { 'actions.change_sort', mode = 'n', desc = 'Change the sort order' },
       ['g\\'] = false,
+      ['gd'] = {
+        desc = 'Toggle file detail view',
+        callback = function()
+          detail = not detail
+          if detail then
+            require('oil').set_columns { 'icon', 'permissions', 'size', 'mtime' }
+          else
+            require('oil').set_columns { 'icon' }
+          end
+        end,
+      },
     },
   },
 

@@ -152,7 +152,6 @@ return {
       vim.keymap.set('n', '<leader>/', function()
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_ivy())
       end, { desc = 'Fuzzy search in current buffer' })
-      vim.keymap.set('n', '<leader>sg', live_multigrep, { desc = 'Multi Grep' })
 
       -- Misc. search
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })

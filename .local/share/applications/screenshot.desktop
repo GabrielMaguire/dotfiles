@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Screenshot
+Comment=Take a screenshot
+Exec=/home/gabriel/.config/hypr/screenshot.sh
+Icon=/run/current-system/sw/share/icons/Chicago95/apps/24/accessories-camera.png
+Terminal=false
+Categories=Utility;Development;

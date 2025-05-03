@@ -68,3 +68,5 @@ vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
 -- Add filetypes not automatically recognized
 vim.filetype.add { extension = { templ = 'templ' } }
+
+vim.diagnostic.config { virtual_text = false }

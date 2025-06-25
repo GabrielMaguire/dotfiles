@@ -134,6 +134,7 @@ return {
           },
         },
         zls = {},
+        qmlls = {},
       }
 
       local lspconfig = require 'lspconfig'

@@ -30,7 +30,15 @@ return {
       python = { 'isort', 'black' },
       sh = { 'shfmt' },
       templ = { 'templ' },
+      qml = { 'qmlformat' },
       zig = { 'zigfmt' },
+    },
+    formatters = {
+      qmlformat = {
+        command = 'qmlformat',
+        args = { '--inplace', '$FILENAME', '--indent-width', '2' },
+        stdin = false,
+      },
     },
   },
 }

@@ -4,6 +4,6 @@ Type=Application
 Name=Screenshot
 Comment=Take a screenshot
 Exec=/home/gabriel/.config/hypr/screenshot.sh
-Icon=/run/current-system/sw/share/icons/Chicago95/apps/24/accessories-camera.png
+Icon=/run/current-system/sw/share/icons/Chicago95/apps/scalable/accessories-camera.svg
 Terminal=false
 Categories=Utility;Development;

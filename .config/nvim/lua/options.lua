@@ -67,6 +67,16 @@ vim.opt.foldenable = false
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
 -- Add filetypes not automatically recognized
-vim.filetype.add { extension = { templ = 'templ' } }
+vim.filetype.add {
+  extension = {
+    templ = 'templ',
+    tmux = 'sh',
+  },
+  filename = {
+    ['tmux.conf'] = 'sh',
+  },
+}
 
 vim.diagnostic.config { virtual_text = false }
+
+vim.g.c_syntax_for_h = 1

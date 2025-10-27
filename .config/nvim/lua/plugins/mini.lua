@@ -2,6 +2,8 @@ return {
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
     config = function()
+      require('mini.pairs').setup()
+
       -- Better Around/Inside textobjects
       --
       -- Examples:
@@ -17,7 +19,15 @@ return {
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
-      require('mini.pairs').setup()
+      -- Add quotes around WORD in normal mode
+      vim.keymap.set('n', '<leader>q', function()
+        vim.cmd 'normal saiW"'
+      end, { desc = '[Q]uote WORD' })
+
+      -- Add quotes around selection in visual mode
+      vim.keymap.set('v', '<leader>q', function()
+        vim.cmd 'normal sa"'
+      end, { desc = '[Q]uote selection' })
     end,
   },
 }

@@ -103,7 +103,10 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       local servers = {
         asm_lsp = {},
-        clangd = {},
+        bashls = {},
+        clangd = {
+          init_options = { fallbackFlags = { '-xc', '-std=c99' } },
+        },
         emmet_ls = {
           -- capabilities = { textDocument = { completion = { completionItem = { snippetSupport = true } } } },
           filetypes = { 'css', 'html', 'templ' },
@@ -141,6 +144,11 @@ return {
       for server, config in pairs(servers) do
         lspconfig[server].setup(config)
       end
+
+      -- lspconfig.clangd.setup {
+      --   filetypes = { 'cpp', 'cc', '' },
+      --   cmd = { 'clangd' },
+      -- }
 
       -- Add border to the diagnostic and lsp popup windows
       vim.diagnostic.config { float = { border = 'rounded' } }

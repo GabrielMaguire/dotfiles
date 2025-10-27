@@ -44,8 +44,8 @@ function y() {
     rm -f -- "$tmp"
 }
 
-export PATH="/home/gabriel/go/bin:$PATH"
-export PATH="~/.npm-global/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.npm-global/bin:$PATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -61,8 +61,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-# ---------------------------------------------------------
-# API Keys
-# ---------------------------------------------------------
-export ANTHROPIC_API_KEY=$(cat ~/.api/anthropic)

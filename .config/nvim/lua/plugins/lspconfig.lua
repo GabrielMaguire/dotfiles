@@ -136,6 +136,12 @@ return {
             },
           },
         },
+        nil_ls = {
+          on_attach = function(client, bufnr)
+            client.server_capabilities.hoverProvider = false
+          end,
+        },
+        nixd = {},
         zls = {},
         qmlls = {},
       }

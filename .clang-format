@@ -4,8 +4,8 @@ IndentWidth: 4
 ---
 Language: Cpp
 DerivePointerAlignment: false
-PointerAlignment: Left
-ColumnLimit: 100
+PointerAlignment: Right
+ColumnLimit: 90
 AlwaysBreakAfterReturnType: All
 AlignConsecutiveMacros: true
 AlignConsecutiveDeclarations:
@@ -16,5 +16,5 @@ PPIndentWidth: 1
 IndentPPDirectives: AfterHash
 AllowShortBlocksOnASingleLine: true
 AllowShortCaseLabelsOnASingleLine: true
-AllowShortIfStatementsOnASingleLine: true
-AllowShortLoopsOnASingleLine: true
+# AllowShortIfStatementsOnASingleLine: true
+# AllowShortLoopsOnASingleLine: true

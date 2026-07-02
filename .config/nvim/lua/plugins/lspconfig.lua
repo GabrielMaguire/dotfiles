@@ -2,12 +2,22 @@ return {
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
+      { 'saghen/blink.cmp' },
+
       -- Useful status updates for LSP.
       { 'j-hui/fidget.nvim', opts = {} },
 
-      -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
+      -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
-      { 'folke/neodev.nvim', opts = {} },
+      {
+        'folke/lazydev.nvim',
+        ft = 'lua',
+        opts = {
+          library = {
+            { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+          },
+        },
+      },
 
       {
         'p00f/clangd_extensions.nvim',
@@ -52,22 +62,23 @@ return {
           end
 
           map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-          map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-          map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-          map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-          map('<leader>cn', vim.lsp.buf.rename, '[C]ode re[N]ame')
-          map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-          map('K', vim.lsp.buf.hover, 'Hover Documentation')
-
-          -- Jump to the type of the word under your cursor.
-          --  Useful when you're not sure what type a variable is and you want to see
-          --  the definition of its *type*, not where it was *defined*.
-          map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-
-          -- WARN: This is not Goto Definition, this is Goto Declaration.
-          --  For example, in C this would take you to the header.
-          map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          map('gD', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+          map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+          -- map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+          -- map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+          -- map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+          map('K', function()
+            vim.lsp.buf.hover { border = 'rounded' }
+          end, 'Hover Documentation')
+          --
+          -- -- Jump to the type of the word under your cursor.
+          -- --  Useful when you're not sure what type a variable is and you want to see
+          -- --  the definition of its *type*, not where it was *defined*.
+          -- map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+          --
+          -- -- WARN: This is not Goto Definition, this is Goto Declaration.
+          -- --  For example, in C this would take you to the header.
+          -- map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
@@ -90,11 +101,8 @@ return {
 
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
-      --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
-      --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities.textDocument.completion.completionItem.snippetSupport = true
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+      --  blink.cmp extends Neovim's default capabilities, which we then broadcast to the servers.
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
 
       --  Add any additional override configuration in the following tables. Available keys are:
       --  - cmd (table): Override the default command used to start the server
@@ -146,19 +154,14 @@ return {
         qmlls = {},
       }
 
-      local lspconfig = require 'lspconfig'
+      vim.lsp.config('*', { capabilities = capabilities })
       for server, config in pairs(servers) do
-        lspconfig[server].setup(config)
+        vim.lsp.config(server, config)
       end
+      vim.lsp.enable(vim.tbl_keys(servers))
 
-      -- lspconfig.clangd.setup {
-      --   filetypes = { 'cpp', 'cc', '' },
-      --   cmd = { 'clangd' },
-      -- }
-
-      -- Add border to the diagnostic and lsp popup windows
+      -- Add border to the diagnostic popup windows
       vim.diagnostic.config { float = { border = 'rounded' } }
-      vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
     end,
   },
 }

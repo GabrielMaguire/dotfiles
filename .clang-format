@@ -16,5 +16,11 @@ PPIndentWidth: 1
 IndentPPDirectives: AfterHash
 AllowShortBlocksOnASingleLine: true
 AllowShortCaseLabelsOnASingleLine: true
+
+PenaltyBreakAssignment: 1000
+
 # AllowShortIfStatementsOnASingleLine: true
 # AllowShortLoopsOnASingleLine: true
+
+# AlignConsecutiveAssignments:
+#   Enabled: true

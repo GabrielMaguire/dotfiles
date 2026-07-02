@@ -10,6 +10,7 @@ BarBlock {
       source: "/run/current-system/sw/share/icons/Chicago95/apps/32/calendar.png"
       sourceSize.width: 20
       sourceSize.height: 20
+      Layout.topMargin: -4
     }
 
     BarText {

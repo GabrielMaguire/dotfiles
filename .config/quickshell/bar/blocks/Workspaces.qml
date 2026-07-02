@@ -16,8 +16,8 @@ RowLayout {
       values: {
         var seenEmpty = false
         let workspaces = [...Hyprland.workspaces.values]
-        console.log(Object.keys(workspaces[0]))
-        console.log(workspaces[0].objectName)
+        // console.log(Object.keys(workspaces[0]))
+        // console.log(workspaces[0].objectName)
 
         return workspaces
           .filter((ws) => {
@@ -234,6 +234,7 @@ RowLayout {
     "": "extra-scale-vim",
     "󰇥": "yazi",
     "x": "google-chrome",
+    // "": "inkscape",
     "n": "org.gnome.Nautilus",
     // "󰇧": "extra-zen",
     "󰇧": "browser",

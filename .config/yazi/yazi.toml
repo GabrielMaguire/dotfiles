@@ -2,6 +2,9 @@
 show_hidden = true
 
 [opener]
+open = [
+	{ run = 'xdg-open "$@"', desc = "Open" },
+]
 open_image = [
 	{ run = 'feh --force-aliasing $1', desc = "Open with feh", for = "unix" },
 ]
@@ -14,4 +17,5 @@ rules = [
 	{ mime = "image/*", use = [ "open_image", "edit_image", "reveal" ] },
 	{ mime = "{audio,video}/*", use = [ "play", "reveal" ] },
 	{ mime = "text/*", use = [ "edit" ] },
+	{ mime = "*", use = "open" },
 ]

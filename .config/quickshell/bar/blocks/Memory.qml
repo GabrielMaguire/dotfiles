@@ -18,19 +18,19 @@ BarBlock {
     }
 
     BarText {
-      text: `${usedMem}%`
+      text: usedMem
     }
   }
 
-  property real usedMem
+  property string usedMem
 
   Process {
     id: memProc
-    command: ["sh", "-c", "free | grep Mem | awk '{print $3/$2 * 100.0}'"]
+    command: ["/home/gabriel/dev/sys_cmds/memory_used"]
     running: true
 
     stdout: SplitParser {
-      onRead: data => usedMem = Math.floor(data)
+      onRead: data => usedMem = data
     }
   }
 

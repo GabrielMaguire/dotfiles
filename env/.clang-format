@@ -1,0 +1,48 @@
+---
+BasedOnStyle: LLVM
+IndentWidth: 4
+
+#########################################
+# Duplicate C/Cpp sections are required.
+# .h files are recognized as C++.
+#########################################
+
+---
+Language: Cpp
+DerivePointerAlignment: false
+PointerAlignment: Right
+ColumnLimit: 90
+AlwaysBreakAfterReturnType: All
+AlignConsecutiveMacros: true
+AlignConsecutiveDeclarations:
+  Enabled: true
+  AcrossEmptyLines: false
+  AcrossComments: false
+PPIndentWidth: 1
+IndentPPDirectives: AfterHash
+AllowShortBlocksOnASingleLine: true
+AllowShortCaseLabelsOnASingleLine: true
+PenaltyBreakAssignment: 1000
+
+---
+Language: C
+DerivePointerAlignment: false
+PointerAlignment: Right
+ColumnLimit: 90
+AlwaysBreakAfterReturnType: All
+AlignConsecutiveMacros: true
+AlignConsecutiveDeclarations:
+  Enabled: true
+  AcrossEmptyLines: false
+  AcrossComments: false
+PPIndentWidth: 1
+IndentPPDirectives: AfterHash
+AllowShortBlocksOnASingleLine: true
+AllowShortCaseLabelsOnASingleLine: true
+PenaltyBreakAssignment: 1000
+
+# AllowShortIfStatementsOnASingleLine: true
+# AllowShortLoopsOnASingleLine: true
+
+AlignConsecutiveAssignments:
+  Enabled: true

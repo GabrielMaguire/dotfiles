@@ -1,0 +1,9 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
+[user]
+name = "Gabriel Maguire"
+email = "gabrielmaguire@protonmail.com"
+
+[ui]
+default-command = "log"
+diff-editor = ":builtin"

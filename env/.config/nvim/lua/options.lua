@@ -56,9 +56,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
--- Enable code folding using treesitter
+-- Enable code folding using treesitter (native foldexpr on Neovim 0.11+)
 vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 -- May need this. Prevents closing all folds when opening a file.
 vim.opt.foldenable = false
 

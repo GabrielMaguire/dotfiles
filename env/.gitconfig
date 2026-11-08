@@ -2,7 +2,7 @@
 	helper = store
 [user]
 	name = Gabriel Maguire
-	email = gabrielmaguire@proton.me
+	email = gabrielmaguire@protonmail.com
 [core]
 	editor = nvim
 [init]
